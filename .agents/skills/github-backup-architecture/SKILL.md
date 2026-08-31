@@ -23,33 +23,33 @@ This skill provides an overview of the system architecture, data models, communi
 ## 2. System Topology
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    Next.js 16 Frontend                      │
-│                  (Deployed on Vercel)                       │
-└───────────────┬─────────────────────────────┬───────────────┘
-                │ REST / SSE                  │ REST / WebSocket
-                ▼                             ▼
-┌─────────────────────────────┐ ┌─────────────────────────────┐
-│     Python Observatory      │ │         Go Backend          │
-│    (Deployed on Vercel)     │ │    (Deployed on Render)     │
-│   FastAPI · LangChain AI    │ │  Fiber v2 · Live WS Stream  │
-└───────────────┬─────────────┘ └─────────────┬───────────────┘
-                │                             │
-                │     ┌─────────────────┐     │
-                ├────►│ Neon PostgreSQL │◄────┤
-                │     │ (pgvector + FTS)│     │
-                │     └────────┬────────┘     │
-                │              ▲              │
-                │              │ Sync         │
-                │     ┌────────┴────────┐     │
-                │     │ Backup Worker   │     │
-                │     │ (CLI / Cron)    │     │
-                │     └─────────────────┘     │
-                ▼                             ▼
-┌─────────────────────────────┐ ┌─────────────────────────────┐
-│     OpenRouter AI APIs      │ │     SMTP Email Service      │
-│ (Multi-Key Failover Pool)   │ │  (Human-In-The-Loop Alerts) │
-└─────────────────────────────┘ └─────────────────────────────┘
+
+                    Next.js 16 Frontend                      
+                  (Deployed on Vercel)                       
+
+                 REST / SSE                   REST / WebSocket
+                                             
+ 
+     Python Observatory                Go Backend          
+    (Deployed on Vercel)          (Deployed on Render)     
+   FastAPI · LangChain AI       Fiber v2 · Live WS Stream  
+ 
+                                             
+                          
+                 Neon PostgreSQL 
+                      (pgvector + FTS)     
+                          
+                                            
+                               Sync         
+                          
+                      Backup Worker        
+                      (CLI / Cron)         
+                          
+                                             
+ 
+     OpenRouter AI APIs            SMTP Email Service      
+ (Multi-Key Failover Pool)      (Human-In-The-Loop Alerts) 
+ 
 ```
 
 ---

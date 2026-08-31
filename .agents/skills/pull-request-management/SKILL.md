@@ -75,10 +75,10 @@ When requested by the user to create a PR:
      --assignee "@me" \
      --label "type/<type>,area/<subsystem>,status/ready-for-review" \
      --body "$(cat << 'EOF'
-   ## 🎯 Pull Request Overview
+   ##  Pull Request Overview
    * <Concise executive summary of changes>
 
-   ### 🏗️ Subsystem Impact & Boundaries
+   ### ️ Subsystem Impact & Boundaries
    | Subsystem | Impacted? | Description of Changes |
    | :--- | :---: | :--- |
    | **Go Backend (Fiber API & WebSockets)** | [x] | <details> |
@@ -86,13 +86,13 @@ When requested by the user to create a PR:
    | **Next.js Frontend (Turbopack)** | [ ] | N/A |
    | **Backup Worker CLI (SQLite)** | [ ] | N/A |
 
-   ### 🧪 Testing & Verification
+   ###  Testing & Verification
    * [x] `make pre-commit` executed and passed all validations
    * [x] Unit, integration, and AI agent test suites passed (`make test`)
    * [x] Static type checking passed (Pyright & TypeScript)
    * [x] Production builds succeeded (Go binaries & Next.js Turbopack)
 
-   ### 🛡️ Security & Documentation
+   ### ️ Security & Documentation
    * [x] Verified zero credentials/secrets committed
    * [x] Relevant agent skills (`.agents/skills/`) and docs updated
    * [x] Release notes added to `CHANGELOG.md`

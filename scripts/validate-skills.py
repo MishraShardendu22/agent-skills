@@ -96,15 +96,15 @@ def main():
             break
             
     if not target_dir:
-        print("❌ Could not locate skills directory (.agents/skills)")
+        print("[ERROR] Could not locate skills directory (.agents/skills)")
         sys.exit(1)
         
     skill_folders = [p for p in target_dir.iterdir() if p.is_dir() and not p.name.startswith(".")]
     if not skill_folders:
-        print("❌ No skills found in", target_dir)
+        print("[ERROR] No skills found in", target_dir)
         sys.exit(1)
         
-    print(f"🔍 Validating {len(skill_folders)} skills in {target_dir.relative_to(repo_root)}...\n")
+    print(f"[INFO] Validating {len(skill_folders)} skills in {target_dir.relative_to(repo_root)}...\n")
     
     all_errors = []
     valid_count = 0
@@ -113,21 +113,21 @@ def main():
         errors = validate_skill(skill_path)
         if errors:
             all_errors.extend(errors)
-            print(f"  ❌ {skill_path.name}: {len(errors)} error(s)")
+            print(f"  [FAIL] {skill_path.name}: {len(errors)} error(s)")
             for err in errors:
-                print(f"     - {err}")
+                print(f"         - {err}")
         else:
             valid_count += 1
-            print(f"  ✅ {skill_path.name}")
+            print(f"  [PASS] {skill_path.name}")
             
     print("\n" + "=" * 50)
     print(f"Summary: {valid_count}/{len(skill_folders)} skills valid.")
     
     if all_errors:
-        print(f"❌ Validation failed with {len(all_errors)} error(s).")
+        print(f"[ERROR] Validation failed with {len(all_errors)} error(s).")
         sys.exit(1)
     else:
-        print("🎉 All skills passed validation!")
+        print("[SUCCESS] All skills passed validation.")
         sys.exit(0)
 
 if __name__ == "__main__":

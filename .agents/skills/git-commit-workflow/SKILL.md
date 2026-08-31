@@ -27,20 +27,20 @@ This skill defines the **Commit Design Taxonomy**, commit classification standar
 All commits in this repository MUST be classified under one of the standard commit categories outlined below. Agents must only construct commits adhering strictly to this taxonomy:
 
 ```text
-┌─────────────────────────────────────────────────────────────────────────┐
-│                      COMMIT DESIGN TAXONOMY                             │
-├───────────────┬─────────────────────────────────────────────────────────┤
-│ feat          │ Feature Addition (new capability, endpoint, service)    │
-│ perf          │ Performance Optimization (caching, query/vector speed)  │
-│ refactor      │ Structural Improvement (cleaner code, zero logic change)│
-│ fix           │ Bug Fix & Error Resolution (runtime fix, edge cases)    │
-│ ui / style    │ UI & Visual Design (Tailwind, components, theme, layout)│
-│ ci / deploy   │ CI/CD, Containerization & DevOps (Actions, Docker, YAML)│
-│ db            │ Database & Migration (idempotent schemas, pgvector)     │
-│ test          │ Testing & Quality Assurance (unit, mock, agent tests)   │
-│ docs          │ Documentation & Specifications (README, SKILL.md, docs) │
-│ chore         │ Routine Maintenance (dependency updates, tool configs)  │
-└───────────────┴─────────────────────────────────────────────────────────┘
+
+                      COMMIT DESIGN TAXONOMY                             
+
+ feat           Feature Addition (new capability, endpoint, service)    
+ perf           Performance Optimization (caching, query/vector speed)  
+ refactor       Structural Improvement (cleaner code, zero logic change)
+ fix            Bug Fix & Error Resolution (runtime fix, edge cases)    
+ ui / style     UI & Visual Design (Tailwind, components, theme, layout)
+ ci / deploy    CI/CD, Containerization & DevOps (Actions, Docker, YAML)
+ db             Database & Migration (idempotent schemas, pgvector)     
+ test           Testing & Quality Assurance (unit, mock, agent tests)   
+ docs           Documentation & Specifications (README, SKILL.md, docs) 
+ chore          Routine Maintenance (dependency updates, tool configs)  
+
 ```
 
 ---
@@ -163,24 +163,24 @@ All commits in this repository MUST be classified under one of the standard comm
 ## 4. The Strict Push Permission Boundary (HITL)
 
 ```text
-┌─────────────────────────────────────────────────────────┐
-│                      AGENT DOMAIN                       │
-│                                                         │
-│  1. Modify files for specific logical milestone         │
-│  2. Run linters, type checks, and pre-commit gates      │
-│  3. Create LOCAL signed Git commit (git commit -s -S)   │
-│  4. Repeat steps 1-3 for each milestone                 │
-└────────────────────────────┬────────────────────────────┘
-                             │
+
+                      AGENT DOMAIN                       
+                                                         
+  1. Modify files for specific logical milestone         
+  2. Run linters, type checks, and pre-commit gates      
+  3. Create LOCAL signed Git commit (git commit -s -S)   
+  4. Repeat steps 1-3 for each milestone                 
+
+                             
                   [HUMAN REVIEW BOUNDARY]
-                             │
-┌────────────────────────────▼────────────────────────────┐
-│                      HUMAN DOMAIN                       │
-│                                                         │
-│  5. Human inspects git diff and git log                 │
-│  6. Human decides whether to push or request changes    │
-│  7. Human executes git push origin <branch> (or prompts)│
-└─────────────────────────────────────────────────────────┘
+                             
+
+                      HUMAN DOMAIN                       
+                                                         
+  5. Human inspects git diff and git log                 
+  6. Human decides whether to push or request changes    
+  7. Human executes git push origin <branch> (or prompts)
+
 ```
 
 > [!CAUTION]
