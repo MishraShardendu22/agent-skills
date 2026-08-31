@@ -24,24 +24,24 @@ This skill guides AI agents and contributors in maintaining GitHub Actions CI/CD
 ## 2. Deployment Boundaries & Automated Pipeline
 
 ```text
-      
-     Next.js Frontend                Python Observatory     
-  (Vercel Production Edge)          (Vercel Serverless /)   
-      
-                                                
-              
-                              
-              
-                        Go Backend API          
-                  (Render Container Service)    
-                (Auto-Deployed from Docker Hub) 
-              
-                              
-              
-                   PostgreSQL 16 + pgvector     
-                  (Neon Database Branching)     
-                [production, staging, dev]      
-              
+┌───────────────────────────┐      ┌───────────────────────────┐
+│     Next.js Frontend      │      │    Python Observatory     │
+│  (Vercel Production Edge) │      │   (Vercel Serverless /)   │
+└─────────────┬─────────────┘      └─────────────┬─────────────┘
+              │                                  │
+              └───────────────┬──────────────────┘
+                              │
+              ┌───────────────▼──────────────────┐
+              │          Go Backend API          │
+              │    (Render Container Service)    │
+              │  (Auto-Deployed from Docker Hub) │
+              └───────────────┬──────────────────┘
+                              │
+              ┌───────────────▼──────────────────┐
+              │     PostgreSQL 16 + pgvector     │
+              │    (Neon Database Branching)     │
+              │  [production, staging, dev]      │
+              └──────────────────────────────────┘
 ```
 
 

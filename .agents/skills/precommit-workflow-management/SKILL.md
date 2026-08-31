@@ -25,12 +25,12 @@ The pre-commit workflow lives in `.githooks/pre-commit` and is tracked directly 
 
 ```text
 Staged Changes Detected (git diff --cached)
-  
-   Only Go files changed  Run Go formatting, vet, tests, build (~1-2s)
-   Only Python files changed  Run Pyright typecheck, agent test suite (~3-4s)
-   Only Frontend files changed  Run Biome lint, Next.js build (~10-12s)
-   Only Documentation changed  Fast-path bypass (<0.2s)
-   Global / Config / Manual  Full monorepo validation gate (~20s)
+  │
+  ├── Only Go files changed ───────► Run Go formatting, vet, tests, build (~1-2s)
+  ├── Only Python files changed ───► Run Pyright typecheck, agent test suite (~3-4s)
+  ├── Only Frontend files changed ─► Run Biome lint, Next.js build (~10-12s)
+  ├── Only Documentation changed ──► Fast-path bypass (<0.2s)
+  └── Global / Config / Manual ────► Full monorepo validation gate (~20s)
 ```
 
 ---
