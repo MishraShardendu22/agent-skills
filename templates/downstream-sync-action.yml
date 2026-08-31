@@ -1,0 +1,32 @@
+name: Sync Skills Upstream
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.agents/skills/**'
+      - 'skills/**'
+  workflow_dispatch:
+
+jobs:
+  sync-skills:
+    name: Push Skills to agent-skills Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Current Repository
+        uses: actions/checkout@v4
+
+      - name: Setup skills-sync CLI
+        run: |
+          mkdir -p "$HOME/.local/bin"
+          curl -fsSL https://raw.githubusercontent.com/MishraShardendu22/agent-skills/main/scripts/skills-sync.sh -o "$HOME/.local/bin/skills-sync"
+          chmod +x "$HOME/.local/bin/skills-sync"
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Push New/Updated Skills Upstream
+        env:
+          AGENT_SKILLS_REPO: "MishraShardendu22/agent-skills"
+          GITHUB_TOKEN: ${{ secrets.SKILLS_SYNC_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          skills-sync push

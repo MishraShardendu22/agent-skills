@@ -1,0 +1,32 @@
+name: Validate Agent Skills
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-skills:
+    name: Lint & Validate SKILL.md Schemas
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run Skill Validator
+        run: |
+          python3 scripts/validate-skills.py
+
+      - name: Test CLI Script Execution
+        run: |
+          chmod +x scripts/skills-sync.sh
+          ./scripts/skills-sync.sh list
+          ./scripts/skills-sync.sh validate
