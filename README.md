@@ -133,6 +133,7 @@ This populates `.agents/skills/` with the entire catalog.
 
 | Skill | Description | Direct Link |
 | :--- | :--- | :--- |
+| `docker-first-architecture` | Enforces multi-stage production Dockerfiles, optimal toolchains (pnpm, uv, static Go), and Docker Hub automation. | [`.agents/skills/docker-first-architecture`](.agents/skills/docker-first-architecture/SKILL.md) |
 | `ci-cd-workflow` | Multi-environment CI/CD workflows, Docker Hub publishing, Render & Vercel deployments. | [`.agents/skills/ci-cd-workflow`](.agents/skills/ci-cd-workflow/SKILL.md) |
 | `cli-tooling-guide` | Standard operating guide for authenticated CLI tools (`gh`, `jules`, `vercel`, `neonctl`, `docker`). | [`.agents/skills/cli-tooling-guide`](.agents/skills/cli-tooling-guide/SKILL.md) |
 | `precommit-workflow-management` | Maintain, configure, and execute intelligent multi-language pre-commit hook suites. | [`.agents/skills/precommit-workflow-management`](.agents/skills/precommit-workflow-management/SKILL.md) |
