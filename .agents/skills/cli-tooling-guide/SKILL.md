@@ -86,6 +86,27 @@ This repository treats specialized developer CLI tools as first-class automation
   cd frontend && vercel deploy
   ```
 
+### E. Python Package Manager (`uv`)
+* **Strict Rule**: Always use `uv`. Never invoke bare `pip install` or `python -m venv`.
+* **Environment & Run**:
+  ```bash
+  uv venv
+  uv sync
+  uv run pytest
+  uv add <pkg>
+  ```
+
+### F. Node.js Package Manager (`pnpm`)
+* **Strict Rule**: Always use `pnpm`. Never invoke `npm` or `yarn`. Only commit `pnpm-lock.yaml`.
+* **Dependencies & Build**:
+  ```bash
+  pnpm install
+  pnpm add <pkg>
+  pnpm up
+  pnpm run build
+  pnpm run test
+  ```
+
 ---
 
 ## 3. Recovery & Re-Authentication Runbook
